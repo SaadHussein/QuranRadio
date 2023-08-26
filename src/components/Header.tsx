@@ -12,7 +12,7 @@ const Header: React.FC = () => {
     console.log(openMenu);
   };
   return (
-    <div className=" flex items-center justify-between">
+    <div className="w-[100%] flex items-center justify-between">
       <div className="w-28 h-14">
         <img
           src={Logo}
