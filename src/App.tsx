@@ -1,9 +1,14 @@
-function App() {
+import React from "react";
+import ControlSide from "./components/ControlSide";
+import StationsSide from "./components/StationsSide";
+
+const App: React.FC = () => {
   return (
-    <div>
-      <h1 className="text-base text-black">Quran Radio</h1>
+    <div className="flex items-center justify-between px-12 py-8">
+      <ControlSide />
+      <StationsSide />
     </div>
   );
-}
+};
 
 export default App;
