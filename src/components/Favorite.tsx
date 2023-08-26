@@ -34,7 +34,7 @@ const Favorite: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-start justify-start sm:mt-0 mt-16">
+    <div className="w-full flex flex-col items-start justify-start sm:mt-0 mt-10">
       <div className="flex items-center justify-between w-full">
         <h1 className="text-[30px] font-bold">Favorite</h1>
         <div className="flex items-center justify-center gap-4">
