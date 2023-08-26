@@ -1,7 +1,9 @@
 import React from "react";
-import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
-import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { FaPlayCircle } from "react-icons/fa";
+import { MdFavoriteBorder } from "react-icons/md";
 import { BsShuffle } from "react-icons/bs";
+// import { FaPauseCircle } from "react-icons/fa";
+// import { MdFavorite } from "react-icons/md";
 
 const Controller: React.FC = () => {
   return (
