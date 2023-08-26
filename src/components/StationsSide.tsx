@@ -55,7 +55,7 @@ const StationsSide: React.FC = () => {
   return (
     <>
       <div
-        className={`stationSide transition-all duration-300 sm:relative absolute sm:top-0 top-4 rounded-xl lg:w-[40%] sm:w-[45%] w-[100%] h-[85vh] mt-20 z-0 ${
+        className={`stationSide shadow-2xl transition-all duration-300 sm:relative absolute sm:top-0 top-4 rounded-xl lg:w-[40%] sm:w-[45%] w-[100%] h-[85vh] mt-20 z-0 ${
           menuOpen ? "translate-x-[120%] sm:translate-x-[0%]" : ""
         } flex items-start justify-start`}
       >
