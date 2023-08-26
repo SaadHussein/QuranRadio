@@ -22,7 +22,7 @@ const FAVORITES: { name: string }[] = [
 ];
 
 const Favorite: React.FC = () => {
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const scroll = (direction: string) => {
     const { current } = scrollRef;
