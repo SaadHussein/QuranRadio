@@ -1,6 +1,6 @@
 import React from "react";
 import StationItem from "./StationItem";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const STATIONS = [
   {
