@@ -4,7 +4,7 @@ import StationsSide from "./components/StationsSide";
 
 const App: React.FC = () => {
   return (
-    <div className="flex items-center justify-between px-12 py-8">
+    <div className="App flex items-center justify-between max-w-screen-xl m-auto">
       <ControlSide />
       <StationsSide />
     </div>
