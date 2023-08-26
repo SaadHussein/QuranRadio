@@ -60,7 +60,7 @@ const StationsSide: React.FC = () => {
         } flex items-start justify-start`}
       >
         <div className="z-10 w-full px-6 py-7 h-full">
-          <h1 className="text-white text-[32px] font-bold mb-6">
+          <h1 className="text-white xsm:text-[32px] text-[22px] font-bold mb-6">
             Choose Station
           </h1>
           <div className="flex flex-col gap-6 overflow-y-auto w-full h-[90%]">
