@@ -1,6 +1,7 @@
 import React from "react";
 import StationItem from "./StationItem";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { stateManagment } from "../model/State";
 
 const STATIONS = [
   {
@@ -48,7 +49,9 @@ const STATIONS = [
 ];
 
 const StationsSide: React.FC = () => {
-  const menuOpen = useSelector((state) => state.QRadio.MenuOpen);
+  const menuOpen = useSelector(
+    (state: stateManagment) => state.QRadio.MenuOpen
+  );
   return (
     <>
       <div
