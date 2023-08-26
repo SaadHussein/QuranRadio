@@ -5,7 +5,7 @@ import Favorite from "./Favorite";
 
 const ControlSide: React.FC = () => {
   return (
-    <div className="w-[50%] h-[80vh] mt-12 flex items-start justify-start flex-col gap-28">
+    <div className="sm:w-[50%] w-full h-[80vh] mt-12 flex items-start justify-start flex-col gap-28">
       <Header />
       <Controller />
       <Favorite />
