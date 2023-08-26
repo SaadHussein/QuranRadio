@@ -3,11 +3,16 @@ import Logo from "../assets/QRadio.png";
 import LanguageMenu from "./LanguageMenu";
 import { MdLanguage } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { toggleMenu } from "../redux/QRadio";
+import { stateManagment } from "../model/State";
+import { GrClose } from "react-icons/gr";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
+  const menuOpen = useSelector(
+    (state: stateManagment) => state.QRadio.MenuOpen
+  );
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const openMenuHandler = () => {
@@ -39,7 +44,7 @@ const Header: React.FC = () => {
           {openMenu && <LanguageMenu />}
         </div>
         <p className="sm:hidden block ml-2" onClick={stationMenuHandler}>
-          Stations
+          {menuOpen ? "Stations" : <GrClose />}
         </p>
       </div>
     </div>
