@@ -39,7 +39,7 @@ const StationItem: React.FC<{ name: string; url: string; id: string }> = ({
       onClick={currentStationHandler}
     >
       <FaPlayCircle size={36} />
-      <p className="lg:text-[24px] md:text-[18px] xsm:text-[16px] text-[10px] mr-2 font-bold">
+      <p className="lg:text-[24px] md:text-[20px] xsm:text-[18px] text-[15px] mr-2 font-bold">
         {name}
       </p>
     </div>
