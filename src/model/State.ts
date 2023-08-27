@@ -17,6 +17,7 @@ export interface stateManagment {
     };
     ourRadios: { id: string; name: string; url: string; isFavorite: boolean }[];
     favoriteRadios: { id: string; name: string; url: string }[];
+    isRunning: boolean;
   };
 }
 
@@ -38,6 +39,7 @@ export interface ForRedux {
   };
   ourRadios: { id: string; name: string; url: string; isFavorite: boolean }[];
   favoriteRadios: { id: string; name: string; url: string }[];
+  isRunning: boolean;
 }
 
 export interface radio {

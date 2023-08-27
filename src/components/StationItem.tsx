@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { setCurrentStation, toggleMenu } from "../redux/QRadio";
+import { controlPlaying, setCurrentStation, toggleMenu } from "../redux/QRadio";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { stateManagment } from "../model/State";
 
@@ -10,13 +10,20 @@ const StationItem: React.FC<{ name: string; url: string; id: string }> = ({
   url,
   id,
 }) => {
+  const audioRef = useRef<HTMLAudioElement>(null);
   const dispatch = useDispatch();
   const currentStation = useSelector(
     (state: stateManagment) => state.QRadio.currentStation
   );
+  const isRunning = useSelector(
+    (state: stateManagment) => state.QRadio.isRunning
+  );
 
   const currentStationHandler = () => {
-    dispatch(setCurrentStation({ name: "", url: "", id: "" }));
+    if (isRunning) {
+      dispatch(controlPlaying());
+    }
+    // dispatch(setCurrentStation({ name: "", url: "", id: "" }));
     dispatch(
       setCurrentStation({
         name: name,
@@ -27,6 +34,8 @@ const StationItem: React.FC<{ name: string; url: string; id: string }> = ({
     dispatch(toggleMenu());
     console.log("Hi");
     console.log(currentStation);
+    dispatch(controlPlaying());
+    isRunning ? audioRef.current?.play() : audioRef.current?.pause();
   };
 
   return (
@@ -35,6 +44,7 @@ const StationItem: React.FC<{ name: string; url: string; id: string }> = ({
       onClick={currentStationHandler}
     >
       <FaPlayCircle size={36} />
+      <audio src={currentStation.url} autoPlay={false} ref={audioRef}></audio>
       <p className="lg:text-[24px] md:text-[18px] xsm:text-[16px] text-[10px] mr-2 font-bold">
         {name}
       </p>

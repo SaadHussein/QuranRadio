@@ -13,6 +13,7 @@ const initialState: ForRedux = {
   },
   ourRadios: [],
   favoriteRadios: [],
+  isRunning: false,
 };
 
 export const QRadio = createSlice({
@@ -60,6 +61,9 @@ export const QRadio = createSlice({
           station.id !== action.payload.id
       );
     },
+    controlPlaying: (state) => {
+      state.isRunning = !state.isRunning;
+    },
   },
 });
 
@@ -70,5 +74,6 @@ export const {
   setOurRadios,
   addToFavorite,
   removeFromFavorite,
+  controlPlaying,
 } = QRadio.actions;
 export default QRadio.reducer;
