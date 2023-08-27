@@ -10,6 +10,7 @@ export interface stateManagment {
         radios: string;
       }[];
     };
+    isRunning: boolean;
   };
 }
 

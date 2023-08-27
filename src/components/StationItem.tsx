@@ -1,16 +1,23 @@
 import React, { useRef } from "react";
 import { FaPlayCircle } from "react-icons/fa";
-// import { useSelector } from "react-redux/es/hooks/useSelector";
-// import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { stateManagment } from "../model/State";
+import { setIsRunning } from "../redux/QRadio";
 
 const StationItem: React.FC<{ name: string; url: string }> = ({
   name,
   url,
 }) => {
+  const isRunning = useSelector(
+    (state: stateManagment) => state.QRadio.isRunning
+  );
+  const dispatch = useDispatch();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const audioHandler = () => {
-    audioRef.current!.play();
+    dispatch(setIsRunning());
+    isRunning ? audioRef.current!.play() : audioRef.current!.pause();
   };
 
   return (
