@@ -2,24 +2,7 @@ import React, { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import FavoriteItem from "./FavoriteItem";
 
-const FAVORITES: { name: string }[] = [
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-  { name: "Saad" },
-];
+const FAVORITES: { name: string }[] = [];
 
 const Favorite: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);

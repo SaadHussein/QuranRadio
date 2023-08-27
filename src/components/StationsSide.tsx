@@ -1,57 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StationItem from "./StationItem";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { stateManagment } from "../model/State";
-
-const STATIONS = [
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "SaadHusseinSaadHussein",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-  {
-    name: "Saad",
-  },
-];
+import { getRadioData } from "../api/api";
+import { radio } from "../model/State";
 
 const StationsSide: React.FC = () => {
+  const [radios, setRadios] = useState<{
+    radios: radio[];
+  }>({ radios: [] });
   const menuOpen = useSelector(
     (state: stateManagment) => state.QRadio.MenuOpen
   );
+  const ourData = useSelector((state: stateManagment) => state.QRadio.ourData);
+
+  useEffect(() => {
+    async function getOurRadioData() {
+      const data = await getRadioData(ourData.language[0].radios);
+      console.log(data);
+      setRadios(data);
+    }
+
+    getOurRadioData();
+  }, [ourData.language]);
   return (
     <>
       <div
@@ -64,10 +35,11 @@ const StationsSide: React.FC = () => {
             Choose Station
           </h1>
           <div className="flex flex-col gap-6 overflow-y-auto w-full h-[90%]">
-            {STATIONS.map((station) => (
+            {radios.radios.map((station) => (
               <StationItem
                 name={station.name}
-                key={station.name + Math.random()}
+                url={station.url}
+                key={station.id}
               />
             ))}
           </div>
