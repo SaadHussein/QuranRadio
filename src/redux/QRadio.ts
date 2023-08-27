@@ -21,9 +21,7 @@ export const QRadio = createSlice({
   initialState,
   reducers: {
     toggleMenu: (state) => {
-      console.log(state.MenuOpen);
       state.MenuOpen = !state.MenuOpen;
-      console.log(state.MenuOpen);
     },
     setData: (state, action) => {
       state.ourData = action.payload;
@@ -61,8 +59,10 @@ export const QRadio = createSlice({
           station.id !== action.payload.id
       );
     },
-    controlPlaying: (state) => {
-      state.isRunning = !state.isRunning;
+    controlPlaying: (state, action) => {
+      console.log(state.isRunning);
+      state.isRunning = action.payload;
+      console.log(state.isRunning);
     },
   },
 });

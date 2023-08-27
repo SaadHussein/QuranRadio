@@ -2,17 +2,29 @@ import React from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsShuffle } from "react-icons/bs";
-// import { FaPauseCircle } from "react-icons/fa";
+import { FaPauseCircle } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { stateManagment } from "../model/State";
-import { addToFavorite, removeFromFavorite } from "../redux/QRadio";
+import {
+  addToFavorite,
+  controlPlaying,
+  removeFromFavorite,
+} from "../redux/QRadio";
+import Audio from "./Audio";
 
 const Controller: React.FC = () => {
   const currentStation = useSelector(
     (state: stateManagment) => state.QRadio.currentStation
   );
+
+  // const audioRef = useRef<HTMLAudioElement>(null);
+
+  const isRunning = useSelector(
+    (state: stateManagment) => state.QRadio.isRunning
+  );
+
   const favoriteRadios = useSelector(
     (state: stateManagment) => state.QRadio.favoriteRadios
   );
@@ -50,12 +62,24 @@ const Controller: React.FC = () => {
     );
   };
 
+  const stopPlaying = () => {
+    dispatch(controlPlaying(false));
+  };
+
+  const continuePlaying = () => {
+    dispatch(controlPlaying(true));
+  };
+
+  // isRunning ? audioRef.current?.play() : audioRef.current?.pause();
+
   return (
     <div className="flex flex-col items-start justify-center xsm:ml-6 ml-0">
       <h3 className="text-black text-[20px] font-normal">PLAYING NOW</h3>
       <h1 className="md:text-[52px] xsm:text-[44px] text-[32px] font-bold">
         {currentStation.name === "" ? "Choose Station" : currentStation.name}
       </h1>
+      <Audio url={currentStation.url} />
+      {/* <audio src={currentStation.url} ref={audioRef}></audio> */}
       <div className="w-[100%] flex items-center justify-center gap-12 mt-6">
         {ifFavorite.length !== 0 ? (
           <MdFavorite
@@ -77,7 +101,20 @@ const Controller: React.FC = () => {
           onClick={addFavoriteHandler}
         /> */}
 
-        <FaPlayCircle size={48} className="cursor-pointer" />
+        {!isRunning && (
+          <FaPlayCircle
+            onClick={continuePlaying}
+            size={48}
+            className="cursor-pointer"
+          />
+        )}
+        {isRunning && (
+          <FaPauseCircle
+            onClick={stopPlaying}
+            size={48}
+            className="cursor-pointer"
+          />
+        )}
         <BsShuffle size={30} className="cursor-pointer" />
       </div>
     </div>
