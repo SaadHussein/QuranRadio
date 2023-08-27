@@ -11,10 +11,12 @@ export interface stateManagment {
       }[];
     };
     currentStation: {
+      id: string;
       name: string;
       url: string;
     };
-    ourRadios: { id: string; name: string; url: string }[];
+    ourRadios: { id: string; name: string; url: string; isFavorite: boolean }[];
+    favoriteRadios: { id: string; name: string }[];
   };
 }
 

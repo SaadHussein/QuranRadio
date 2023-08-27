@@ -44,6 +44,7 @@ const StationsSide: React.FC = () => {
                   name={station.name}
                   url={station.url}
                   key={station.id}
+                  id={station.id}
                 />
               )
             )}

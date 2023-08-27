@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { stateManagment } from "../model/State";
 
 const initialState = {
   MenuOpen: false,
   ourData: [],
   currentStation: {
     name: "",
+    id: "",
     url: "",
   },
   ourRadios: [],
+  favoriteRadios: [],
 };
 
 export const QRadio = createSlice({
@@ -24,18 +27,48 @@ export const QRadio = createSlice({
       console.log(state.ourData);
     },
     setCurrentStation: (state, action) => {
-      console.log(action.payload);
       state.currentStation.name = action.payload.name;
       state.currentStation.url = action.payload.url;
-      console.log(state.currentStation);
+      state.currentStation.id = action.payload.id;
     },
     setOurRadios: (state, action) => {
       state.ourRadios = action.payload;
       console.log(state.ourRadios);
     },
+    addToFavorite: (state, action) => {
+      const ifItemAlreadyIn = state.favoriteRadios.find(
+        (item) => item.id === action.payload.id
+      );
+      const item: { name: string; id: string } = {
+        name: action.payload.name,
+        id: action.payload.id,
+      };
+
+      console.log(item);
+      if (ifItemAlreadyIn === undefined) {
+        state.favoriteRadios = [...state.favoriteRadios, item];
+      } else if (
+        ifItemAlreadyIn !== undefined ||
+        ifItemAlreadyIn.id === item.id
+      ) {
+        return;
+      }
+    },
+    removeFromFavorite: (state, action) => {
+      state.favoriteRadios = state.favoriteRadios.filter(
+        (station: { name: string; id: string }) =>
+          station.id !== action.payload.id
+      );
+    },
   },
 });
 
-export const { toggleMenu, setData, setCurrentStation, setOurRadios } =
-  QRadio.actions;
+export const {
+  toggleMenu,
+  setData,
+  setCurrentStation,
+  setOurRadios,
+  addToFavorite,
+  removeFromFavorite,
+} = QRadio.actions;
 export default QRadio.reducer;

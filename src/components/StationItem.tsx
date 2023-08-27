@@ -5,9 +5,10 @@ import { setCurrentStation, toggleMenu } from "../redux/QRadio";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { stateManagment } from "../model/State";
 
-const StationItem: React.FC<{ name: string; url: string }> = ({
+const StationItem: React.FC<{ name: string; url: string; id: string }> = ({
   name,
   url,
+  id,
 }) => {
   const dispatch = useDispatch();
   const currentStation = useSelector(
@@ -15,8 +16,14 @@ const StationItem: React.FC<{ name: string; url: string }> = ({
   );
 
   const currentStationHandler = () => {
-    dispatch(setCurrentStation({ name: "", url: "" }));
-    dispatch(setCurrentStation({ name: name, url: url }));
+    dispatch(setCurrentStation({ name: "", url: "", id: "" }));
+    dispatch(
+      setCurrentStation({
+        name: name,
+        url: url,
+        id: id,
+      })
+    );
     dispatch(toggleMenu());
     console.log("Hi");
     console.log(currentStation);

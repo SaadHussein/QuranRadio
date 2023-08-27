@@ -1,11 +1,15 @@
 import React, { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import FavoriteItem from "./FavoriteItem";
-
-const FAVORITES: { name: string }[] = [];
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { stateManagment } from "../model/State";
 
 const Favorite: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  const favoriteRadios = useSelector(
+    (state: stateManagment) => state.QRadio.favoriteRadios
+  );
 
   const scroll = (direction: string) => {
     const { current } = scrollRef;
@@ -39,7 +43,7 @@ const Favorite: React.FC = () => {
         className="flex gap-4 w-full overflow-x-hidden mt-2 duration-300"
         ref={scrollRef}
       >
-        {FAVORITES.map((favorite) => (
+        {favoriteRadios.map((favorite) => (
           <FavoriteItem
             name={favorite.name}
             key={favorite.name + Math.random()}
