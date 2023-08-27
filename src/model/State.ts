@@ -20,6 +20,18 @@ export interface stateManagment {
   };
 }
 
+export interface ForRedux {
+  MenuOpen: boolean;
+  ourData: any;
+  currentStation: {
+    id: string;
+    name: string;
+    url: string;
+  };
+  ourRadios: any;
+  favoriteRadios: { id: string; name: string }[];
+}
+
 export interface radio {
   id: string;
   name: string;

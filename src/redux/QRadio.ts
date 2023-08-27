@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stateManagment } from "../model/State";
+import { ForRedux } from "../model/State";
 
-const initialState = {
+const initialState: ForRedux = {
   MenuOpen: false,
   ourData: [],
   currentStation: {
@@ -37,7 +37,7 @@ export const QRadio = createSlice({
     },
     addToFavorite: (state, action) => {
       const ifItemAlreadyIn = state.favoriteRadios.find(
-        (item) => item.id === action.payload.id
+        (item: { name: string; id: string }) => item.id === action.payload.id
       );
       const item: { name: string; id: string } = {
         name: action.payload.name,
@@ -46,11 +46,8 @@ export const QRadio = createSlice({
 
       console.log(item);
       if (ifItemAlreadyIn === undefined) {
-        state.favoriteRadios = [...state.favoriteRadios, item];
-      } else if (
-        ifItemAlreadyIn !== undefined ||
-        ifItemAlreadyIn.id === item.id
-      ) {
+        state.favoriteRadios = [{ ...item }, ...state.favoriteRadios];
+      } else if (ifItemAlreadyIn !== undefined) {
         return;
       }
     },
