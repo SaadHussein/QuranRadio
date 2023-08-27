@@ -46,7 +46,9 @@ const Favorite: React.FC = () => {
         {favoriteRadios.map((favorite) => (
           <FavoriteItem
             name={favorite.name}
-            key={favorite.name + Math.random()}
+            url={favorite.url}
+            key={favorite.id}
+            id={favorite.id}
           />
         ))}
       </div>

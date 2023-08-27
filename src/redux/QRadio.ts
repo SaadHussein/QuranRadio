@@ -3,7 +3,9 @@ import { ForRedux } from "../model/State";
 
 const initialState: ForRedux = {
   MenuOpen: false,
-  ourData: [],
+  ourData: {
+    language: [],
+  },
   currentStation: {
     name: "",
     id: "",
@@ -39,9 +41,10 @@ export const QRadio = createSlice({
       const ifItemAlreadyIn = state.favoriteRadios.find(
         (item: { name: string; id: string }) => item.id === action.payload.id
       );
-      const item: { name: string; id: string } = {
+      const item: { name: string; id: string; url: string } = {
         name: action.payload.name,
         id: action.payload.id,
+        url: action.payload.url,
       };
 
       console.log(item);

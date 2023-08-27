@@ -30,7 +30,11 @@ const Controller: React.FC = () => {
   const addFavoriteHandler = () => {
     console.log("Fuck");
     dispatch(
-      addToFavorite({ name: currentStation.name, id: currentStation.id })
+      addToFavorite({
+        name: currentStation.name,
+        id: currentStation.id,
+        url: currentStation.url,
+      })
     );
     console.log(favoriteRadios);
   };

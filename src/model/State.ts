@@ -16,20 +16,28 @@ export interface stateManagment {
       url: string;
     };
     ourRadios: { id: string; name: string; url: string; isFavorite: boolean }[];
-    favoriteRadios: { id: string; name: string }[];
+    favoriteRadios: { id: string; name: string; url: string }[];
   };
 }
 
 export interface ForRedux {
   MenuOpen: boolean;
-  ourData: any;
+  ourData: {
+    language: {
+      id: string;
+      language: string;
+      native: string;
+      surah: string;
+      radios: string;
+    }[];
+  };
   currentStation: {
     id: string;
     name: string;
     url: string;
   };
-  ourRadios: any;
-  favoriteRadios: { id: string; name: string }[];
+  ourRadios: { id: string; name: string; url: string; isFavorite: boolean }[];
+  favoriteRadios: { id: string; name: string; url: string }[];
 }
 
 export interface radio {
