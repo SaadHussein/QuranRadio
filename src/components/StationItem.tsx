@@ -15,10 +15,7 @@ const StationItem: React.FC<{ name: string; url: string }> = ({
   const dispatch = useDispatch();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const audioHandler = () => {
-    dispatch(setIsRunning());
-    isRunning ? audioRef.current!.play() : audioRef.current!.pause();
-  };
+  const audioHandler = () => {};
 
   return (
     <div
