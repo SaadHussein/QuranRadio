@@ -13,6 +13,9 @@ const StationsSide: React.FC = () => {
     (state: stateManagment) => state.QRadio.MenuOpen
   );
   const ourData = useSelector((state: stateManagment) => state.QRadio.ourData);
+  const ourRadios = useSelector(
+    (state: stateManagment) => state.QRadio.ourRadios
+  );
 
   useEffect(() => {
     async function getOurRadioData() {
@@ -34,14 +37,16 @@ const StationsSide: React.FC = () => {
           <h1 className="text-white xsm:text-[32px] text-[22px] font-bold mb-6">
             Choose Station
           </h1>
-          <div className="flex flex-col gap-6 overflow-y-auto w-full h-[90%]">
-            {radios.radios.map((station) => (
-              <StationItem
-                name={station.name}
-                url={station.url}
-                key={station.id}
-              />
-            ))}
+          <div className="flex flex-col gap-6 overflow-y-auto overflow-x-hidden w-full h-[90%]">
+            {(ourRadios.length === 0 ? radios.radios : ourRadios).map(
+              (station) => (
+                <StationItem
+                  name={station.name}
+                  url={station.url}
+                  key={station.id}
+                />
+              )
+            )}
           </div>
         </div>
       </div>

@@ -4,13 +4,19 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { BsShuffle } from "react-icons/bs";
 // import { FaPauseCircle } from "react-icons/fa";
 // import { MdFavorite } from "react-icons/md";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { stateManagment } from "../model/State";
 
 const Controller: React.FC = () => {
+  const currentStation = useSelector(
+    (state: stateManagment) => state.QRadio.currentStation
+  );
+
   return (
     <div className="flex flex-col items-start justify-center xsm:ml-6 ml-0">
       <h3 className="text-black text-[20px] font-normal">PLAYING NOW</h3>
       <h1 className="md:text-[52px] xsm:text-[44px] text-[32px] font-bold">
-        Choose Station
+        {currentStation.name === "" ? "Choose Station" : currentStation.name}
       </h1>
       <div className="w-[100%] flex items-center justify-center gap-12 mt-6">
         <MdFavoriteBorder size={30} className="cursor-pointer" />

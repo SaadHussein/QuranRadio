@@ -3,6 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   MenuOpen: false,
   ourData: [],
+  currentStation: {
+    name: "",
+    url: "",
+  },
+  ourRadios: [],
 };
 
 export const QRadio = createSlice({
@@ -18,8 +23,19 @@ export const QRadio = createSlice({
       state.ourData = action.payload;
       console.log(state.ourData);
     },
+    setCurrentStation: (state, action) => {
+      console.log(action.payload);
+      state.currentStation.name = action.payload.name;
+      state.currentStation.url = action.payload.url;
+      console.log(state.currentStation);
+    },
+    setOurRadios: (state, action) => {
+      state.ourRadios = action.payload;
+      console.log(state.ourRadios);
+    },
   },
 });
 
-export const { toggleMenu, setData } = QRadio.actions;
+export const { toggleMenu, setData, setCurrentStation, setOurRadios } =
+  QRadio.actions;
 export default QRadio.reducer;
