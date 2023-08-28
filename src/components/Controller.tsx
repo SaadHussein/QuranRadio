@@ -11,6 +11,7 @@ import {
   addToFavorite,
   controlPlaying,
   removeFromFavorite,
+  setCurrentStation,
 } from "../redux/QRadio";
 import Audio from "./Audio";
 
@@ -18,6 +19,12 @@ const Controller: React.FC = () => {
   const currentStation = useSelector(
     (state: stateManagment) => state.QRadio.currentStation
   );
+  const ourData = useSelector((state: stateManagment) => state.QRadio.ourData);
+  const ourRadios = useSelector(
+    (state: stateManagment) => state.QRadio.ourRadios
+  );
+
+  console.log(ourData, ourRadios);
 
   // const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -70,6 +77,14 @@ const Controller: React.FC = () => {
     dispatch(controlPlaying(true));
   };
 
+  const shuffleStation = () => {
+    const randomIndex = Math.floor(Math.random() * ourRadios.length);
+    const { name, id, url } = ourRadios[randomIndex];
+
+    dispatch(controlPlaying(false));
+    dispatch(setCurrentStation({ name, id, url }));
+  };
+
   // isRunning ? audioRef.current?.play() : audioRef.current?.pause();
 
   return (
@@ -115,7 +130,11 @@ const Controller: React.FC = () => {
             className="cursor-pointer"
           />
         )}
-        <BsShuffle size={30} className="cursor-pointer" />
+        <BsShuffle
+          size={30}
+          className="cursor-pointer"
+          onClick={shuffleStation}
+        />
       </div>
     </div>
   );

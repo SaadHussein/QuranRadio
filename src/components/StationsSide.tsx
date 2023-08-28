@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import StationItem from "./StationItem";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { stateManagment } from "../model/State";
 import { getRadioData } from "../api/api";
 import { radio } from "../model/State";
+import { setOurRadios } from "../redux/QRadio";
 
 const StationsSide: React.FC = () => {
+  const dispatch = useDispatch();
   const [radios, setRadios] = useState<{
     radios: radio[];
   }>({ radios: [] });
@@ -22,10 +25,11 @@ const StationsSide: React.FC = () => {
       const data = await getRadioData(ourData.language[0].radios);
       console.log(data);
       setRadios(data);
+      dispatch(setOurRadios(data.radios));
     }
 
     getOurRadioData();
-  }, [ourData.language]);
+  }, [ourData.language, dispatch]);
   return (
     <>
       <div
