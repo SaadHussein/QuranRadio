@@ -29,7 +29,6 @@ const StationItem: React.FC<{ name: string; url: string; id: string }> = ({
       })
     );
     dispatch(toggleMenu());
-    console.log("Hi");
     console.log(currentStation);
   };
 

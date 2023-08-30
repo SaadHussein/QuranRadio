@@ -12,9 +12,6 @@ const Audio: React.FC<{ url: string }> = ({ url }) => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  console.log("Fuck Me");
-  console.log(isRunning, url);
-
   isRunning ? audioRef.current?.play() : audioRef.current?.pause();
 
   // dispatch(controlPlaying(true));

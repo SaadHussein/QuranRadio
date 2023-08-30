@@ -10,7 +10,6 @@ const App: React.FC = () => {
   useEffect(() => {
     async function setOurData() {
       const data = await getData();
-      console.log(data);
       dispatch(setData(data));
     }
 

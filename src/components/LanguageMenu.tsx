@@ -11,7 +11,6 @@ const LanguageMenu: React.FC = () => {
 
   async function languageHandler(url: string) {
     const data = await getRadioData(url);
-    console.log(data);
     dispatch(setOurRadios(data.radios));
   }
   return (

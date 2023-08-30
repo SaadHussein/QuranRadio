@@ -40,14 +40,9 @@ const Controller: React.FC = () => {
     (item) => item.id === currentStation.id
   );
 
-  console.log(ifFavorite);
-
-  console.log(currentStation);
-
   const dispatch = useDispatch();
 
   const addFavoriteHandler = () => {
-    console.log("Fuck");
     dispatch(
       addToFavorite({
         name: currentStation.name,
@@ -55,7 +50,6 @@ const Controller: React.FC = () => {
         url: currentStation.url,
       })
     );
-    console.log(favoriteRadios);
   };
 
   const removeFavoriteHandler = () => {

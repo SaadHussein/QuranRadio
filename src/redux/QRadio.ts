@@ -25,7 +25,6 @@ export const QRadio = createSlice({
     },
     setData: (state, action) => {
       state.ourData = action.payload;
-      console.log(state.ourData);
     },
     setCurrentStation: (state, action) => {
       state.currentStation.name = action.payload.name;
@@ -34,7 +33,6 @@ export const QRadio = createSlice({
     },
     setOurRadios: (state, action) => {
       state.ourRadios = action.payload;
-      console.log(state.ourRadios);
     },
     addToFavorite: (state, action) => {
       const ifItemAlreadyIn = state.favoriteRadios.find(
@@ -60,9 +58,7 @@ export const QRadio = createSlice({
       );
     },
     controlPlaying: (state, action) => {
-      console.log(state.isRunning);
       state.isRunning = action.payload;
-      console.log(state.isRunning);
     },
   },
 });

@@ -23,7 +23,6 @@ const StationsSide: React.FC = () => {
   useEffect(() => {
     async function getOurRadioData() {
       const data = await getRadioData(ourData.language[0].radios);
-      console.log(data);
       setRadios(data);
       dispatch(setOurRadios(data.radios));
     }
